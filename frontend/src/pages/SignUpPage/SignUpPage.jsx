@@ -32,46 +32,88 @@ export default function SignUpPage({setUser}) {
   const disable = formData.password !== formData.confirm;
 
   return (
-    <>
-      <h2>Sign Up!</h2>
-      <form autoComplete="off" onSubmit={handleSumbit}> 
-        <label>Name</label>
+<>
+<div className="d-flex flex-column align-items-center" style={{ marginTop: '8vh' }}>
+  <div className="w-100" style={{ maxWidth: '400px' }}>
+    <h2 className="text-center mb-4">Sign Up</h2>
+    <form autoComplete="off" onSubmit={handleSumbit}>
+
+      {/* Name */}
+      <div className="input-group input-group-lg mb-3">
+        <span className="input-group-text" id="name-addon">Name</span>
         <input
           type="text"
+          className="form-control"
           name="name"
           value={formData.name}
           onChange={handleChange}
           required
+          aria-describedby="name-addon"
+          placeholder="Your Name"
         />
-        <label>Email</label>
+      </div>
+
+      {/* Email */}
+      <div className="input-group input-group-lg mb-3">
+        <span className="input-group-text" id="email-addon">Email</span>
         <input
           type="email"
+          className="form-control"
           name="email"
           value={formData.email}
           onChange={handleChange}
           required
+          aria-describedby="email-addon"
+          placeholder="Email"
         />
-        <label>Password</label>
+      </div>
+
+      {/* Password */}
+      <div className="input-group input-group-lg mb-3">
+        <span className="input-group-text" id="password-addon">Password</span>
         <input
           type="password"
+          className="form-control"
           name="password"
           value={formData.password}
           onChange={handleChange}
           required
+          aria-describedby="password-addon"
+          placeholder="Password"
         />
-        <label>Confirm</label>
+      </div>
+
+      {/* Confirm Password */}
+      <div className="input-group input-group-lg mb-3">
+        <span className="input-group-text" id="confirm-addon">Confirm</span>
         <input
           type="password"
+          className="form-control"
           name="confirm"
           value={formData.confirm}
           onChange={handleChange}
           required
+          aria-describedby="confirm-addon"
+          placeholder="Confirm Password"
         />
-        <button type="submit" disabled={disable}>
-          SIGN UP
-        </button>
-      </form>
-      <p className="error-message">&nbsp;{errorMsg}</p>
-    </>
+      </div>
+
+      {/* Submit Button */}
+      <button
+        type="submit"
+        className="btn btn-primary w-100"
+        disabled={disable}
+      >
+        SIGN UP
+      </button>
+    </form>
+
+    {/* Error Message */}
+    {errorMsg && <p className="text-danger mt-2">{errorMsg}</p>}
+  </div>
+</div>
+
+</>
+
   );
 }

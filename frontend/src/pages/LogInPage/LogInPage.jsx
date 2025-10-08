@@ -28,28 +28,55 @@ export default function LogInPage({ setUser }) {
   }
 
   return (
-    <>
-      <h2>Log In!</h2>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <label>Email</label>
+<>
+<div className="d-flex flex-column align-items-center" style={{ marginTop: '10vh' }}>
+  <div className="w-100" style={{ maxWidth: '400px' }}>
+    <h2 className="text-center mb-4">Log In</h2>
+    <form autoComplete="off" onSubmit={handleSubmit}>
+
+      {/* Email */}
+      <div className="input-group input-group-lg mb-3">
+        <span className="input-group-text" id="email-addon">Email</span>
         <input
           type="email"
+          className="form-control"
           name="email"
           value={formData.email}
           onChange={handleChange}
           required
+          aria-describedby="email-addon"
+          placeholder="Email"
         />
-        <label>Password</label>
+      </div>
+
+      {/* Password */}
+      <div className="input-group input-group-lg mb-3">
+        <span className="input-group-text" id="password-addon">Password</span>
         <input
           type="password"
+          className="form-control"
           name="password"
           value={formData.password}
           onChange={handleChange}
           required
+          aria-describedby="password-addon"
+          placeholder="Password"
         />
-        <button type="submit">LOG IN</button>
-      </form>
-      <p className="error-message">&nbsp;{errorMsg}</p>
-    </>
+      </div>
+
+      {/* Submit Button */}
+      <button type="submit" className="btn btn-primary w-100">
+        LOG IN
+      </button>
+    </form>
+
+    {/* Error Message */}
+    {errorMsg && <p className="text-danger mt-2">{errorMsg}</p>}
+  </div>
+</div>
+
+
+</>
+
   );
 }

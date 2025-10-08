@@ -1,19 +1,25 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
   {
-    content: { type: String, required: true },
-    author: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
-    }
+    user: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
+    inputType: { type: String, enum: ["text", "image"], required: true },
+    inputText: { type: String },
+    imageUrl: { type: String }, 
+    sourceLanguage: { type: String, default: "en" },
+    targetLanguage: { type: String, default: "zh" },
+    translation: { type: String },
+    culture: { type: String },
+    hint: { type: String },
   },
   {
     timestamps: true,
   }
 );
 
-
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model("Post", postSchema);

@@ -49,21 +49,21 @@ button:disabled {
 }
 
 form {
+  border: none; /* remove form border */
+  padding: 4vmin;
   display: grid;
   gap: 1.2vmin;
-  padding: 4vmin;
-  border: 0.5vmin solid #1a1a1a;
-  border-radius: 1vmin;
 }
 
 input,
 select,
 textarea {
+  border: none; /* remove input borders */
   padding: 0.7vmin;
   font-size: 2vmin;
-  border: 0.3vmin solid #1a1a1a;
-  border-radius: 0.5vmin;
+  border-radius: 0; /* optional, remove rounded corners */
 }
+
 
 form > button:last-child {
   margin-top: 2vmin;

@@ -13,27 +13,60 @@ export default function NavBar({ user }) {
 
     }
   return (
-    <nav className="NavBar">
-      <NavLink to="/">Home</NavLink>
-      &nbsp; | &nbsp;
-      {user ? (
-        <>
-          <NavLink to="/posts" end>
-            Post List
-          </NavLink>
-          &nbsp; | &nbsp;
-          <NavLink to="/posts/new">New Post</NavLink>
-          &nbsp; | &nbsp;
-          <Link to="/" onClick={handleLogOut}>Log Out</Link>
-          <span>Welcome, {user.name}</span>
-        </>
-      ) : (
-        <>
-          <NavLink to="/login">Log In</NavLink>
-          &nbsp; | &nbsp;
-          <NavLink to="/signup">Sign Up</NavLink>
-        </>
-      )}
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <NavLink className="navbar-brand" to="/">LinguaMath</NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto">
+            {user && (
+              <>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/posts">Post List</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/posts/new">New Post</NavLink>
+                </li>
+              </>
+            )}
+          </ul>
+
+          <ul className="navbar-nav">
+            {user ? (
+              <>
+                <li className="nav-item">
+                  <span className="navbar-text me-3">Welcome, {user.name}</span>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/" onClick={handleLogOut}>
+                    Log Out
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/login">Log In</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+      </div>
     </nav>
   );
 }
