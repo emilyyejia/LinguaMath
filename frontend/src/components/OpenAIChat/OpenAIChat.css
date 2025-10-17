@@ -1,0 +1,195 @@
+/* Container */
+.openai-chat-container {
+  height: 100vh;
+  background-color: #f9f9f9;
+  padding: 3rem 1rem 1rem 1rem;  /* push everything down */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* Toast notifications */
+.toast {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  background-color: #333;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+/* Form container with border including everything inside */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;                     /* space between buttons and textarea */
+  border: 1px solid #ccc;         /* border around everything */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: white;
+  width: 100%;                    /* full width */
+  max-width: 100%;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+/* Mode buttons container */
+.mode-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;                     /* space between buttons */
+  margin-bottom: 2rem;           /* space between buttons and textarea */
+  width: 100%;
+}
+
+/* Mode buttons and Ask button same height */
+.ai-btn {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  height: 45px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+/* Selected mode button */
+.ai-btn.active-mode {
+  background-color: #e0e0e0;   /* light grey */
+  border-color: #bbb;
+}
+
+.ai-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #bbb;
+}
+
+.ai-btn:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+  border-color: #ccc;
+}
+
+/* Ask button smaller width and primary color */
+.ai-btn.ask-btn {
+  width: 100px;                 /* same as Add to Log button */
+  background-color: white;    /* bootstrap primary */
+  color: black;
+  border: 1px solid #ccc;
+}
+
+.ai-btn.ask-btn:hover {
+  background-color: #e0e0e0;    /* darker primary on hover */
+}
+
+/* Mode buttons flexible width */
+.mode-buttons .ai-btn {
+  flex: 1;
+  max-width: 280px;             /* Relate to Culture fits on one line */
+}
+
+/* Textarea - full width of form container */
+textarea {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  min-height: 100px;             /* larger textarea */
+  width: 100%;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+input[type="file"] {
+  border: 1px solid #ccc;        /* same as buttons */
+  border-radius: 0.5rem;         /* rounded corners like buttons */
+  padding: 0.4rem 0.6rem;        /* some padding */
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: white;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+input[type="file"]:hover {
+  border-color: #bbb;
+  background-color: #f9f9f9;
+}
+
+
+/* Image preview smaller */
+form img {
+  max-width: 10%;   /* half of the current size */
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+/* Messages container */
+.messages-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+  align-self: center;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* Individual messages */
+.message {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  max-width: 70%;
+  box-sizing: border-box;
+  display: inline-block;
+  word-wrap: break-word;
+}
+
+.message.user {
+  background-color: #0d6efd;   /* Bootstrap primary */
+  color: white;
+  text-align: right;
+  margin-left: auto;
+}
+
+.message.ai {
+  background-color: #f0f0f0;
+  text-align: left;
+  margin-right: auto;
+}
+
+.message img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+/* Add to Log button inside AI messages */
+.message button {
+  background-color: #0d6efd;   /* primary color */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+.message button:hover {
+  background-color: #0b5ed7;   /* darker primary */
+  border-color: #0b5ed7;
+}
+

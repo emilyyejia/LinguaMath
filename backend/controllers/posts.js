@@ -6,18 +6,13 @@ module.exports = {
 
 async function index(req, res) {
   try {
-    const posts = await Post.find({});
-    // below would return all posts for just the logged in user
+    const posts = await Post.find({ user: req.user._id, savedToLog: true });
     res.json(posts);
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to fetch posts" });
   }
 }
-
-// controllers/postCtrl.js
-
-
 
 async function create(req, res) {
   console.log("User from token:", req.user);

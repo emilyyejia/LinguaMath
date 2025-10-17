@@ -4,6 +4,8 @@ import './NavBar.css';
 
 export default function NavBar({ user }) {
   const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem("token"); // check if token exists
+
   function handleLogOut() {
     logOut();
     setUser(null);
@@ -15,7 +17,9 @@ export default function NavBar({ user }) {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <NavLink className="navbar-brand fw-bold" to="/">
+        <NavLink className="navbar-brand fw-bold"
+          to={isLoggedIn ? "/posts/new" : "/"}
+        >
           LinguaMath
         </NavLink>
         <button
