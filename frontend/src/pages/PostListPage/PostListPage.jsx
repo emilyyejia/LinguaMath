@@ -14,7 +14,8 @@ export default function PostListPage () {
       <h1>Post List</h1>
       {posts.length ? 
         <ul>
-            {posts.map((post) => <li key={post._id}>{post.content}</li>)}
+            {posts.map((post) => <li key={post._id}>{post.inputText}</li>)}
+
 
         </ul>
         :

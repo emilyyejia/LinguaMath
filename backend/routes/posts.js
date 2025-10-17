@@ -7,7 +7,7 @@ const ensureLoggedIn = require('../middleware/ensureLoggedIn');
 // Protect all defined routes
 router.use(ensureLoggedIn);
 // GET /api/posts Index action
-// router.get('/', postsCtrl.index);
+router.get('/', postsCtrl.index);
 // Post/api/posts Create action 
 router.post('/', postsCtrl.create);
 

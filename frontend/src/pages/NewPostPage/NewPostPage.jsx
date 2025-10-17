@@ -1,42 +1,41 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useNavigate } from "react-router";
-import * as postService from '../../services/postService'
+import * as postService from "../../services/postService";
+import OpenAIChat from "../../components/OpenAIChat/OpenAIChat";
 
-export default function NewPostPage () {
+export default function NewPostPage() {
   const [content, setContent] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
-   
   const navigate = useNavigate();
 
-  async function handleSumbit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-        // sendRequest is expecting an object as the payload
-       await postService.create({ content });
-       navigate('/posts');
+      await postService.create({ content });
+      navigate('/posts');
     } catch (err) {
-        setErrorMsg('Adding Post Failed');
-        console.log(err);
+      setErrorMsg('Adding Post Failed');
+      console.error(err);
     }
+  }
 
+  function handleAIReply(aiText) {
+    setContent(aiText);
   }
 
   return (
-    <>
-      <h2>Add Post</h2>
-      <form autoComplete="off" onSubmit={handleSumbit}> 
-        <label>Post Content</label>
-        <input
-          type="text"
-          value={content}
-          onChange={(evt) => setContent(evt.target.value)}
-          required
-        />
-        <button type="submit" >
-          ADD POST
-        </button>
-      </form>
-      <p className="error-message">&nbsp;{errorMsg}</p>
-    </>
+    <div className="container-fluid p-0" style={{ height: '100vh' }}> {/* full screen */}
+      <div className="d-flex" style={{ height: '100%' }}>
+
+        {/* Left side - takes remaining space */}
+        <div className="flex-grow-1 border rounded p-3 bg-light d-flex flex-column">
+    
+          <OpenAIChat onAIReply={handleAIReply} />
+        </div>
+
+          {errorMsg && <p className="text-danger mt-2">{errorMsg}</p>}
+        </div>
+
+    </div>
   );
 }

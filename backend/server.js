@@ -1,13 +1,19 @@
 const path = require('path'); // Built into Node
 const express = require('express');
+const cors = require('cors');
 const logger = require('morgan');
 const app = express();
-
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+}));
 // Process the secrets/config vars in .env
 require('dotenv').config();
 
 // Connect to the database
 require('./db');
+
+
 
 app.use(logger('dev'));
 // Serve static assets from the frontend's built code folder (dist)
@@ -22,6 +28,9 @@ app.use(express.json());
 // API Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/posts', require('./routes/posts'));
+app.use('/api/openai', require('./routes/openai'));
+app.use('/api/openai-vision', require('./routes/openai-vision'));
+
 // Use a "catch-all" route to deliver the frontend's production index.html
 app.get('/*splat', function (req, res) {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));

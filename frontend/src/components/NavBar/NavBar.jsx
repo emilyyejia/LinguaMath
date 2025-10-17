@@ -3,19 +3,21 @@ import { logOut } from '../../services/authService';
 import './NavBar.css';
 
 export default function NavBar({ user }) {
-    const navigate = useNavigate();
-    function handleLogOut() {
-        logOut();
-        setUser(null);
-        // navigate('/') not working; 
-        // The<Link> that was clicked will navigate to '/'
-        // Due to async issues
+  const navigate = useNavigate();
+  function handleLogOut() {
+    logOut();
+    setUser(null);
+    // navigate('/') not working; 
+    // The<Link> that was clicked will navigate to '/'
+    // Due to async issues
 
-    }
+  }
   return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">LinguaMath</NavLink>
+        <NavLink className="navbar-brand fw-bold" to="/">
+          LinguaMath
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -33,10 +35,10 @@ export default function NavBar({ user }) {
             {user && (
               <>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/posts">Post List</NavLink>
+                  <NavLink className="nav-link" to="/posts">Your Log</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/posts/new">New Post</NavLink>
+                  <NavLink className="nav-link" to="/posts/new">Ask AI</NavLink>
                 </li>
               </>
             )}
