@@ -18,10 +18,28 @@ export default function NewPostPage() {
       console.error(err);
     }
   }
+  async function handleAIReply({ inputType, inputText, imageUrl, mode, aiReply }) {
+    try {
+      const postData = {
+        inputType,
+        inputText,
+        imageUrl,
+        sourceLanguage: "en",
+        targetLanguage: "zh",
+      };
 
-  function handleAIReply(aiText) {
-    setContent(aiText);
+      // Save according to mode
+      if (mode === "translate") postData.translation = aiReply;
+      if (mode === "culture") postData.culture = aiReply;
+      if (mode === "hint") postData.hint = aiReply;
+
+      await postService.create(postData);
+      console.log("✅ Saved to MongoDB:", postData);
+    } catch (err) {
+      console.error("❌ Failed to save AI interaction:", err);
+    }
   }
+
 
   return (
     <div className="container-fluid p-0" style={{ height: '100vh' }}> {/* full screen */}
@@ -29,12 +47,12 @@ export default function NewPostPage() {
 
         {/* Left side - takes remaining space */}
         <div className="flex-grow-1 border rounded p-3 bg-light d-flex flex-column">
-    
+
           <OpenAIChat onAIReply={handleAIReply} />
         </div>
 
-          {errorMsg && <p className="text-danger mt-2">{errorMsg}</p>}
-        </div>
+        {errorMsg && <p className="text-danger mt-2">{errorMsg}</p>}
+      </div>
 
     </div>
   );

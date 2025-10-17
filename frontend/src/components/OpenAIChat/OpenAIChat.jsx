@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-export default function OpenAIChat() {
+export default function OpenAIChat({ onAIReply }) {
   const [prompt, setPrompt] = useState("");
   const [messages, setMessages] = useState([]); // conversation
   const [loading, setLoading] = useState(false);
@@ -26,8 +26,8 @@ export default function OpenAIChat() {
         mode === "translate"
           ? `Translate this text clearly in Chinese and accurately while preserving mathematical meaning:\n${prompt}`
           : mode === "culture"
-          ? `Explain this math concept in a way that connects to the Chinese culture or local examples in English and Chinese:\n${prompt}`
-          : `Provide a step-by-step hint for solving this math question in both English and Chinese without giving the full answer:\n${prompt}`;
+            ? `Explain this math concept in a way that connects to the Chinese culture or local examples in English and Chinese:\n${prompt}`
+            : `Provide a step-by-step hint for solving this math question in both English and Chinese without giving the full answer:\n${prompt}`;
 
       const endpoint = imageFile ? "/api/openai-vision" : "/api/openai";
 
@@ -55,7 +55,15 @@ export default function OpenAIChat() {
 
       // Add AI reply
       setMessages((prev) => [...prev, { role: "ai", text: data.reply || "No response from AI." }]);
-
+      if (typeof onAIReply === "function") {
+        onAIReply({
+          inputType: imageFile ? "image" : "text",
+          inputText: prompt,
+          imageUrl: imagePreview || null,
+          mode,
+          aiReply: data.reply,
+        });
+      }
       // Reset input
       setPrompt("");
       setImageFile(null);
@@ -109,8 +117,8 @@ export default function OpenAIChat() {
             mode === "translate"
               ? "Enter text or math problem to translate..."
               : mode === "culture"
-              ? "Enter math topic or problem to explain with cultural context..."
-              : "Enter a math question to get a hint..."
+                ? "Enter math topic or problem to explain with cultural context..."
+                : "Enter a math question to get a hint..."
           }
           className="form-control mb-3"
           rows="3"

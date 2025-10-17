@@ -15,23 +15,19 @@ async function index(req, res) {
   }
 }
 
+// controllers/postCtrl.js
+
+
+
 async function create(req, res) {
+  console.log("User from token:", req.user);
   try {
-    // assign the user
-    req.body.user = req.user._id;
-
-    // default to "text" if inputType not provided
-    if (!req.body.inputType) req.body.inputType = "text";
-
-    // map frontend 'content' to schema 'inputText'
-    if (!req.body.inputText && req.body.content) {
-      req.body.inputText = req.body.content;
-    }
-
-    const post = await Post.create(req.body);
+    const post = await Post.create({ ...req.body, user: req.user._id });
     res.json(post);
   } catch (err) {
-    console.log(err);
-    res.status(400).json({ message: "Failed to create post" });
+    console.error(err);
+    res.status(400).json({ error: "Failed to create post" });
   }
 }
+
+
