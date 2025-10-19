@@ -4,7 +4,7 @@ const cors = require('cors');
 const logger = require('morgan');
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://linguamath-d1c9e2effc7a.herokuapp.com',
   credentials: true,
 }));
 // Process the secrets/config vars in .env
