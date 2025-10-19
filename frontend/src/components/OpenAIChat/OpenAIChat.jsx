@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./OpenAIChat.css";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
-
 
 export default function OpenAIChat({ onAIReply }) {
   const [prompt, setPrompt] = useState("");
@@ -13,13 +11,14 @@ export default function OpenAIChat({ onAIReply }) {
   const [toast, setToast] = useState("");
   const bottomRef = useRef(null);
 
-  // Scroll to bottom only when there are messages
+  // Scroll to bottom when messages update
   useEffect(() => {
     if (messages.length > 0) {
       bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
+  // Hide toast after 2 seconds
   useEffect(() => {
     if (toast) {
       const timer = setTimeout(() => setToast(""), 2000);
@@ -37,8 +36,8 @@ export default function OpenAIChat({ onAIReply }) {
         mode === "translate"
           ? `Translate this text clearly in Chinese and accurately while preserving mathematical meaning:\n${prompt}`
           : mode === "culture"
-            ? `Explain this math concept in a way that connects to the Chinese culture or local examples in English and Chinese:\n${prompt}`
-            : `Provide a step-by-step hint for solving this math question in both English and Chinese without giving the full answer:\n${prompt}`;
+          ? `Explain this math concept in a way that connects to the Chinese culture or local examples in English and Chinese:\n${prompt}`
+          : `Provide a step-by-step hint for solving this math question in both English and Chinese without giving the full answer:\n${prompt}`;
 
       const endpoint = imageFile ? "/api/openai-vision" : "/api/openai";
 
@@ -58,11 +57,8 @@ export default function OpenAIChat({ onAIReply }) {
         { role: "user", text: prompt, image: imagePreview || null },
       ]);
 
-      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
-        method: "POST",
-        headers,
-        body,
-      });
+      const res = await fetch(endpoint, { method: "POST", headers, body });
+
       const data = await res.json();
 
       const aiMessage = { role: "ai", text: data.reply || "No response from AI." };
@@ -115,7 +111,7 @@ export default function OpenAIChat({ onAIReply }) {
         targetLanguage: "zh",
       };
       const token = localStorage.getItem("token");
-      const res = await fetch(`${API_BASE_URL}/api/posts`, {
+      const res = await fetch("/api/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -141,20 +137,18 @@ export default function OpenAIChat({ onAIReply }) {
           <button
             key={m}
             type="button"
-            className={`ai-btn ${mode === m ? "active-mode" : ""}`}  // add this
+            className={`ai-btn ${mode === m ? "active-mode" : ""}`}
             onClick={() => setMode(m)}
           >
             {m === "translate"
               ? "Translate"
               : m === "culture"
-                ? "Relate to Your Culture"
-                : "Hint"}
+              ? "Relate to Your Culture"
+              : "Hint"}
           </button>
         ))}
       </div>
 
-
-      {/* Chat input form */}
       <form onSubmit={handleSubmit} className="form-container">
         <textarea
           value={prompt}
@@ -163,8 +157,8 @@ export default function OpenAIChat({ onAIReply }) {
             mode === "translate"
               ? "Enter text or math problem to translate..."
               : mode === "culture"
-                ? "Enter math topic or problem to explain with cultural context..."
-                : "Enter a math question to get a hint..."
+              ? "Enter math topic or problem to explain with cultural context..."
+              : "Enter a math question to get a hint..."
           }
         />
         <input type="file" accept="image/*" onChange={handleFileChange} />
@@ -178,7 +172,6 @@ export default function OpenAIChat({ onAIReply }) {
         </button>
       </form>
 
-      {/* Messages */}
       <div className="messages-container">
         {messages.map((msg, idx) => (
           <div key={idx} className={`message ${msg.role}`}>
