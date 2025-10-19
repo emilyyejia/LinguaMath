@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./OpenAIChat.css";
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL || "http://localhost:3000";
+
 
 export default function OpenAIChat({ onAIReply }) {
   const [prompt, setPrompt] = useState("");
@@ -56,7 +59,7 @@ export default function OpenAIChat({ onAIReply }) {
         { role: "user", text: prompt, image: imagePreview || null },
       ]);
 
-      const res = await fetch(`http://localhost:3000${endpoint}`, {
+      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: "POST",
         headers,
         body,
@@ -113,7 +116,7 @@ export default function OpenAIChat({ onAIReply }) {
         targetLanguage: "zh",
       };
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3000/api/posts", {
+      const res = await fetch(`${API_BASE_URL}/api/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
