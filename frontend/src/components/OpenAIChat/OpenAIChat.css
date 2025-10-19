@@ -1,19 +1,23 @@
-/* Container */
+/* =========================
+   Container
+========================= */
 .openai-chat-container {
   height: 100vh;
   background-color: #f9f9f9;
-  padding: 3rem 1rem 1rem 1rem;  /* push everything down */
+  padding: 3rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   box-sizing: border-box;
 }
 
-/* Toast notifications */
+/* =========================
+   Toast notifications
+========================= */
 .toast {
   position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
+  top: 1rem;
+  right: 1rem;
   background-color: #333;
   color: white;
   padding: 0.5rem 1rem;
@@ -22,31 +26,48 @@
   z-index: 1000;
 }
 
-/* Form container with border including everything inside */
+/* =========================
+   Form container
+========================= */
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;                     /* space between buttons and textarea */
-  border: 1px solid #ccc;         /* border around everything */
+  gap: 1rem;
+  border: 1px solid #ccc;
   border-radius: 0.5rem;
   padding: 1rem;
   background-color: white;
-  width: 100%;                    /* full width */
+  width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   align-self: center;
 }
 
-/* Mode buttons container */
+/* =========================
+   Mode buttons
+========================= */
 .mode-buttons {
   display: flex;
+  flex-wrap: wrap;          /* wrap buttons on small screens */
   justify-content: center;
-  gap: 1rem;                     /* space between buttons */
-  margin-bottom: 2rem;           /* space between buttons and textarea */
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   width: 100%;
 }
 
-/* Mode buttons and Ask button same height */
+.mode-buttons .ai-btn {
+  flex: 1 1 auto;
+  max-width: 100%;
+  min-width: 120px;
+  text-align: center;
+  white-space: normal;      /* allow text wrap */
+  font-size: 0.95rem;
+  padding: 0.4rem 0.6rem;
+}
+
+/* =========================
+   Buttons
+========================= */
 .ai-btn {
   background-color: white;
   color: black;
@@ -54,13 +75,12 @@
   border-radius: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
-  padding: 0.5rem 1rem;
   height: 45px;
   transition: background-color 0.2s, border-color 0.2s;
 }
-/* Selected mode button */
+
 .ai-btn.active-mode {
-  background-color: #e0e0e0;   /* light grey */
+  background-color: #e0e0e0;
   border-color: #bbb;
 }
 
@@ -75,40 +95,38 @@
   border-color: #ccc;
 }
 
-/* Ask button smaller width and primary color */
 .ai-btn.ask-btn {
-  width: 100px;                 /* same as Add to Log button */
-  background-color: white;    /* bootstrap primary */
+  width: 100px;
+  background-color: white;
   color: black;
   border: 1px solid #ccc;
 }
 
 .ai-btn.ask-btn:hover {
-  background-color: #e0e0e0;    /* darker primary on hover */
+  background-color: #e0e0e0;
 }
 
-/* Mode buttons flexible width */
-.mode-buttons .ai-btn {
-  flex: 1;
-  max-width: 280px;             /* Relate to Culture fits on one line */
-}
-
-/* Textarea - full width of form container */
+/* =========================
+   Textarea
+========================= */
 textarea {
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   padding: 0.5rem;
   font-size: 1rem;
-  min-height: 100px;             /* larger textarea */
+  min-height: 100px;
   width: 100%;
   resize: vertical;
   box-sizing: border-box;
 }
 
+/* =========================
+   File input
+========================= */
 input[type="file"] {
-  border: 1px solid #ccc;        /* same as buttons */
-  border-radius: 0.5rem;         /* rounded corners like buttons */
-  padding: 0.4rem 0.6rem;        /* some padding */
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.6rem;
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
@@ -121,17 +139,20 @@ input[type="file"]:hover {
   background-color: #f9f9f9;
 }
 
-
-/* Image preview smaller */
+/* =========================
+   Image preview
+========================= */
 form img {
-  max-width: 10%;   /* half of the current size */
+  max-width: 100%;
   height: auto;
   border-radius: 5px;
   margin-bottom: 0.5rem;
   border: 1px solid #ccc;
 }
 
-/* Messages container */
+/* =========================
+   Messages container
+========================= */
 .messages-container {
   flex-grow: 1;
   overflow-y: auto;
@@ -146,7 +167,9 @@ form img {
   box-sizing: border-box;
 }
 
-/* Individual messages */
+/* =========================
+   Individual messages
+========================= */
 .message {
   padding: 0.5rem 1rem;
   border-radius: 1rem;
@@ -157,7 +180,7 @@ form img {
 }
 
 .message.user {
-  background-color: #0d6efd;   /* Bootstrap primary */
+  background-color: #0d6efd;
   color: white;
   text-align: right;
   margin-left: auto;
@@ -178,7 +201,7 @@ form img {
 
 /* Add to Log button inside AI messages */
 .message button {
-  background-color: #0d6efd;   /* primary color */
+  background-color: #0d6efd;
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -189,7 +212,38 @@ form img {
 }
 
 .message button:hover {
-  background-color: #0b5ed7;   /* darker primary */
+  background-color: #0b5ed7;
   border-color: #0b5ed7;
 }
 
+/* =========================
+   Mobile responsive
+========================= */
+@media (max-width: 480px) {
+  .openai-chat-container {
+    padding: 2rem 0.5rem 1rem 0.5rem;
+  }
+
+  .form-container {
+    padding: 0.8rem;
+  }
+
+  textarea {
+    min-height: 80px;
+    font-size: 0.95rem;
+  }
+
+  .ai-btn.ask-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .mode-buttons {
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .messages-container {
+    padding: 0 0.5rem;
+  }
+}
