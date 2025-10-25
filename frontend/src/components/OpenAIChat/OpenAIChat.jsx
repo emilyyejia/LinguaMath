@@ -36,7 +36,12 @@ export default function OpenAIChat({ onAIReply }) {
         mode === "translate"
           ? `Translate this text clearly in Chinese and accurately while preserving mathematical meaning:\n${prompt}`
           : mode === "culture"
-          ? `Explain this math concept in a way that connects to the Chinese culture or local examples in English and Chinese:\n${prompt}`
+          ? `You are a bilingual math tutor who helps Chinese newcomer students in Canada understand math word problems.
+
+Step 1: Identify and explain Canadian or English cultural terms or items that may be unfamiliar to Chinese students (for example: muffin, cup, yard, gallon, snow shovel, camping trip).
+
+Step 2: Give short explanations in both English and Chinese, using familiar cultural or daily life comparisons from China. Please do not provide solution or answer to the math problem.
+:\n${prompt}`
           : `Provide a step-by-step hint for solving this math question in both English and Chinese without giving the full answer:\n${prompt}`;
 
       const endpoint = imageFile ? "/api/openai-vision" : "/api/openai";

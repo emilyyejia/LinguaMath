@@ -1,145 +1,85 @@
-.openai-chat-container {
-  height: 100vh;
-  background-color: #f9f9f9;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;  /* center everything horizontally */
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #1a1a1a;
+  background-color: whitesmoke;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Toast notifications */
-.toast {
-  position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
-  background-color: #333;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  z-index: 1000;
-}
-
-/* Form container with border including everything inside */
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  border: 1px solid #ccc;   /* border around the whole form */
-  border-radius: 0.5rem;
-  padding: 1rem;
-  background-color: white;
-  width: 80%;               /* 80% of screen width */
-  max-width: 1000px;
+* {
   box-sizing: border-box;
 }
 
-/* Mode buttons container */
-.mode-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  width: 100%;
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-/* Mode buttons and Ask button same height */
-.ai-btn {
-  background-color: white;
-  color: black;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  height: 40px;          /* uniform height */
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-.ai-btn:hover {
-  background-color: #f0f0f0;
-  border-color: #bbb;
-}
-
-.ai-btn:disabled {
-  background-color: #e0e0e0;
-  cursor: not-allowed;
-  border-color: #ccc;
-}
-
-/* Ask button smaller width */
-.ai-btn.ask-btn {
-  width: 120px;
-  align-self: center;
-}
-
-/* Mode buttons flexible width */
-.mode-buttons .ai-btn {
-  flex: 1;
-  max-width: 180px;
-}
-
-/* Textarea - remove border */
-textarea {
-  border: none;          /* no border */
-  border-radius: 0.5rem; /* optional for rounded corners */
-  padding: 0.5rem;
-  font-size: 1rem;
-  min-height: 120px;
-  width: 100%;
-  resize: vertical;
-  box-sizing: border-box;
-}
-
-/* File input - keep simple */
-input[type="file"] {
-  border: none;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Messages container */
-.messages-container {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 80%;
-  max-width: 1000px;
-}
-
-/* Individual messages */
-.message {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid #ccc; /* keep border for each message */
+h1,
+h2 {
   text-align: center;
-  background-color: white;
 }
 
-.message img {
-  max-width: 100%;
-  max-height: 150px;
-  border-radius: 5px;
-  margin-bottom: 0.5rem;
-}
-
-/* Add to Log button inside messages */
-.message button {
-  background-color: white;
-  color: black;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  padding: 0.3rem 0.8rem;
-  font-size: 0.9rem;
+button {
+  border: 0.5vmin solid #1a1a1a;
+  border-radius: 0.5vmin;
+  padding: 0.8vmin;
+  font-size: 2vmin;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: white;   /* already white */
+  color: black;              /* change from whitesmoke to black */
   cursor: pointer;
-  margin-top: 0.25rem;
 }
 
-.message button:hover {
-  background-color: #f0f0f0;
-  border-color: #bbb;
+button:hover {
+  background-color: white;  /* keep white on hover */
+  color: black;             /* keep text black */
+  border-color: #1a1a1a;
+}
+
+
+button:disabled {
+  background-color: white;
+}
+
+form {
+  border: none; /* remove form border */
+  padding: 4vmin;
+  display: grid;
+  gap: 1.2vmin;
+}
+
+input,
+select,
+textarea {
+  border: none; /* remove input borders */
+  padding: 0.7vmin;
+  font-size: 2vmin;
+  border-radius: 0; /* optional, remove rounded corners */
+}
+
+
+form > button:last-child {
+  margin-top: 2vmin;
+}
+
+label {
+  font-size: 2vmin;
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+}
+
+.error-message {
+  color: rgb(166, 29, 29);
 }

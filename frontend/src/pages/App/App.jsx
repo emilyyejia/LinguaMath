@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router'
 import './App.css'
+import AboutPage from '../AboutPage/AboutPage'; 
 import HomePage from '../Homepage/HomePage';
 import PostListPage from '../PostListPage/PostListPage';
 import NewPostPage from '../NewPostPage/NewPostPage';
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/posts" element={<PostListPage />} />
             <Route path="/posts/new" element={<NewPostPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={null}/>
           </Routes>
         ) : (
@@ -27,6 +29,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignUpPage setUser={setUser}/>}/>
             <Route path="/login" element={<LogInPage setUser={setUser}/>}/>
+            <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={null}/>
           </Routes>
         )}
