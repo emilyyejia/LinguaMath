@@ -18,7 +18,7 @@ export default function NavBar({ user, setUser }) {
       <div className="container-fluid">
         <NavLink
           className="navbar-brand fw-bold"
-          to={isLoggedIn ? "/posts/new" : "/"}
+          to={isLoggedIn ? "/" : "/"}
         >
           <img
             src={logo}

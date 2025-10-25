@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import promoImage from '../../assets/promo-image.jpg'; // replace with your image path
 
-export default function HomePage() {
+export default function HomePage({user}) {
   return (
     <div className="container py-5">
       {/* Hero Section */}
@@ -12,13 +12,15 @@ export default function HomePage() {
             Our mission is to empower all students to learn mathematics confidently, regardless of
             language or background.
           </p>
-          <Link
-            to="/signup"
-            className="btn btn-lg rounded-pill px-4 text-white"
-            style={{ backgroundColor: '#13e713ff', borderColor: '#13e713ff' }}
-          >
-            Get Started
-          </Link>
+          {!user && (
+            <Link
+              to="/signup"
+              className="btn btn-lg rounded-pill px-4 text-white"
+              style={{ backgroundColor: '#13e713ff', borderColor: '#13e713ff' }}
+            >
+              Get Started
+            </Link>
+          )}
         </div>
         <div className="col-md-6 text-center">
           <img
@@ -58,7 +60,7 @@ export default function HomePage() {
         <div className="col-md-8">
           <p className="mb-3">
             <Link to="/about" className="fw-bold">Learn more</Link> about our research, team, and mission to support multilingual students in learning mathematics.
-    </p>
+          </p>
         </div>
       </div>
 

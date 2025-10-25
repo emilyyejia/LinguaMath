@@ -2,8 +2,8 @@ import React from "react";
 
 export default function AboutPage() {
   return (
-    <div className="container py-5">
-      <h1 className="fw-bold mb-4 text-center">About LinguaMath</h1>
+    <div className="d-flex flex-column vh-100 overflow-auto p-5" style={{ backgroundColor: '#f8f9fa' }}>
+      <h1 className="fw-bold mb-4 text-center">About Us</h1>
 
       {/* Who We Are */}
       <section className="mb-5">

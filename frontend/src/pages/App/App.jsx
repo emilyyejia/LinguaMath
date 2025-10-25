@@ -18,7 +18,7 @@ export default function App() {
       <section id='main-section'>
         {user ? (
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage user={user} />} />
             <Route path="/posts" element={<PostListPage />} />
             <Route path="/posts/new" element={<NewPostPage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -26,7 +26,7 @@ export default function App() {
           </Routes>
         ) : (
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage user={user} />} />
             <Route path="/signup" element={<SignUpPage setUser={setUser}/>}/>
             <Route path="/login" element={<LogInPage setUser={setUser}/>}/>
             <Route path="/about" element={<AboutPage />} />
