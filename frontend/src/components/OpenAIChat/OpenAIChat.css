@@ -180,7 +180,7 @@ form img {
 }
 
 .message.user {
-  background-color: #0d6efd;
+  background-color: #13e713;
   color: white;
   text-align: right;
   margin-left: auto;
@@ -201,7 +201,7 @@ form img {
 
 /* Add to Log button inside AI messages */
 .message button {
-  background-color: #0d6efd;
+  background-color: #13e713;
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -212,8 +212,8 @@ form img {
 }
 
 .message button:hover {
-  background-color: #0b5ed7;
-  border-color: #0b5ed7;
+  background-color: #13e713;
+  border-color: #13e713;
 }
 
 /* =========================
@@ -246,4 +246,13 @@ form img {
   .messages-container {
     padding: 0 0.5rem;
   }
+}
+
+.image-preview {
+  max-width: 100%;      /* ensures it never exceeds the container width */
+  max-height: 200px;    /* limits height so it doesn't push footer */
+  object-fit: contain;  /* preserves aspect ratio without cropping */
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }

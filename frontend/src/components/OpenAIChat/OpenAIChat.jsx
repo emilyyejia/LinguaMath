@@ -1,4 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
 import "./OpenAIChat.css";
 
 export default function OpenAIChat({ onAIReply }) {
@@ -10,15 +13,16 @@ export default function OpenAIChat({ onAIReply }) {
   const [mode, setMode] = useState("translate");
   const [toast, setToast] = useState("");
   const bottomRef = useRef(null);
+  const fileInputRef = useRef(null);
 
-  // Scroll to bottom when messages update
+  // Auto-scroll to bottom when new messages appear
   useEffect(() => {
     if (messages.length > 0) {
       bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
-  // Hide toast after 2 seconds
+  // Auto-hide toast after 2 seconds
   useEffect(() => {
     if (toast) {
       const timer = setTimeout(() => setToast(""), 2000);
@@ -36,13 +40,13 @@ export default function OpenAIChat({ onAIReply }) {
         mode === "translate"
           ? `Translate this text clearly in Chinese and accurately while preserving mathematical meaning:\n${prompt}`
           : mode === "culture"
-          ? `You are a bilingual math tutor who helps Chinese newcomer students in Canada understand math word problems.
+            ? `You are a bilingual math tutor who helps Chinese newcomer students in Canada understand math word problems.
 
-Step 1: Identify and explain Canadian or English cultural terms or items that may be unfamiliar to Chinese students (for example: muffin, cup, yard, gallon, snow shovel, camping trip).
+Step 1: Identify and explain Canadian or English cultural terms that may be unfamiliar to Chinese students (e.g., muffin, cup, yard, gallon, snow shovel).
 
-Step 2: Give short explanations in both English and Chinese, using familiar cultural or daily life comparisons from China. Please do not provide solution or answer to the math problem.
-:\n${prompt}`
-          : `Provide a step-by-step hint for solving this math question in both English and Chinese without giving the full answer:\n${prompt}`;
+Step 2: Give short explanations in both English and Chinese using familiar cultural comparisons from China. Do NOT provide a full solution.
+\n${prompt}`
+            : `Provide a step-by-step hint for solving this math question in both English and Chinese without giving the full answer:\n${prompt}`;
 
       const endpoint = imageFile ? "/api/openai-vision" : "/api/openai";
 
@@ -57,18 +61,20 @@ Step 2: Give short explanations in both English and Chinese, using familiar cult
         headers["Content-Type"] = "application/json";
       }
 
+      // Add user message to UI
       setMessages((prev) => [
         ...prev,
         { role: "user", text: prompt, image: imagePreview || null },
       ]);
 
+      // Call API
       const res = await fetch(endpoint, { method: "POST", headers, body });
-
       const data = await res.json();
 
       const aiMessage = { role: "ai", text: data.reply || "No response from AI." };
       setMessages((prev) => [...prev, aiMessage]);
 
+      // Callback to parent (NewPostPage)
       if (onAIReply)
         onAIReply({
           inputType: imageFile ? "image" : "text",
@@ -78,9 +84,11 @@ Step 2: Give short explanations in both English and Chinese, using familiar cult
           aiReply: data.reply,
         });
 
+      // Reset input
       setPrompt("");
       setImageFile(null);
       setImagePreview(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (err) {
       console.error("Error calling AI:", err);
       setMessages((prev) => [
@@ -124,7 +132,6 @@ Step 2: Give short explanations in both English and Chinese, using familiar cult
         },
         body: JSON.stringify(postData),
       });
-      const savedPost = await res.json();
       if (res.ok) setToast("Added to Log!");
       else setToast("Failed to save to log");
     } catch (err) {
@@ -134,63 +141,83 @@ Step 2: Give short explanations in both English and Chinese, using familiar cult
   };
 
   return (
-    <div className="openai-chat-container">
-      {toast && <div className="toast">{toast}</div>}
+    <MathJaxContext
+      config={{
+        loader: { load: ["input/tex", "output/chtml"] },
+        tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]] },
+      }}
+    >
+      <div className="openai-chat-container">
+        {toast && <div className="toast">{toast}</div>}
 
-      <div className="mode-buttons">
-        {["translate", "culture", "hint"].map((m) => (
-          <button
-            key={m}
-            type="button"
-            className={`ai-btn ${mode === m ? "active-mode" : ""}`}
-            onClick={() => setMode(m)}
-          >
-            {m === "translate"
-              ? "Translate"
-              : m === "culture"
-              ? "Relate to Your Culture"
-              : "Hint"}
+        {/* Mode buttons */}
+        <div className="mode-buttons">
+          {["translate", "culture", "hint"].map((m) => (
+            <button
+              key={m}
+              type="button"
+              className={`ai-btn ${mode === m ? "active-mode" : ""}`}
+              onClick={() => setMode(m)}
+            >
+              {m === "translate"
+                ? "Translate"
+                : m === "culture"
+                  ? "Relate to Your Culture"
+                  : "Hint"}
+            </button>
+          ))}
+        </div>
+
+        {/* Input Form */}
+        <form onSubmit={handleSubmit} className="form-container">
+          <textarea
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder={
+              mode === "translate"
+                ? "Enter text or math problem to translate..."
+                : mode === "culture"
+                  ? "Enter math topic or problem to explain with cultural context..."
+                  : "Enter a math question to get a hint..."
+            }
+          />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+          />
+          {imagePreview && (
+            <div className="text-center">
+              <img src={imagePreview} alt="Selected" className="image-preview" />
+            </div>
+          )}
+          <button type="submit" className="ai-btn ask-btn" disabled={loading}>
+            {loading ? "Thinking..." : "Ask"}
           </button>
-        ))}
-      </div>
+        </form>
 
-      <form onSubmit={handleSubmit} className="form-container">
-        <textarea
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder={
-            mode === "translate"
-              ? "Enter text or math problem to translate..."
-              : mode === "culture"
-              ? "Enter math topic or problem to explain with cultural context..."
-              : "Enter a math question to get a hint..."
-          }
-        />
-        <input type="file" accept="image/*" onChange={handleFileChange} />
-        {imagePreview && (
-          <div className="text-center">
-            <img src={imagePreview} alt="Selected" className="image-preview" />
-          </div>
-        )}
-        <button type="submit" className="ai-btn ask-btn" disabled={loading}>
-          {loading ? "Thinking..." : "Ask"}
-        </button>
-      </form>
+        {/* Chat Messages */}
+        <div className="messages-container">
+          {messages.map((msg, idx) => (
+            <div key={idx} className={`message ${msg.role}`}>
+              {msg.image && <img src={msg.image} alt="user-upload" />}
+              <MathJax dynamic>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {msg.text}
+                </ReactMarkdown>
+              </MathJax>
 
-      <div className="messages-container">
-        {messages.map((msg, idx) => (
-          <div key={idx} className={`message ${msg.role}`}>
-            {msg.image && <img src={msg.image} alt="user-upload" />}
-            <p>{msg.text}</p>
-            {msg.role === "ai" && (
-              <button className="ai-btn mt-2" onClick={() => handleAddToLog(msg)}>
-                Add to Log
-              </button>
-            )}
-          </div>
-        ))}
-        <div ref={bottomRef} />
+              {msg.role === "ai" && (
+                <button className="ai-btn mt-2" onClick={() => handleAddToLog(msg)}>
+                  Add to Log
+                </button>
+              )}
+            </div>
+          ))}
+          <div ref={bottomRef} />
+        </div>
       </div>
-    </div>
+    </MathJaxContext>
   );
 }

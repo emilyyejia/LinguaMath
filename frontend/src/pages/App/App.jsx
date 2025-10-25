@@ -9,11 +9,12 @@ import NavBar from '../../components/NavBar/NavBar';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import { getUser } from '../../services/authService';
 import LogInPage from '../LogInPage/LogInPage';
+import Footer from "../../components/Footer/Footer";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
   return (
-    <main className='App'>
+    <main className='App d-flex flex-column min-vh-100'>
       <NavBar user={user} setUser={setUser}/>
       <section id='main-section'>
         {user ? (
@@ -34,6 +35,7 @@ export default function App() {
           </Routes>
         )}
       </section>
+        <Footer />
     </main>
   );
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import * as postService from "../../services/postService";
 import OpenAIChat from "../../components/OpenAIChat/OpenAIChat";
+import { MathJaxContext } from "better-react-mathjax";
 
 export default function NewPostPage() {
   const [content, setContent] = useState('');
@@ -18,6 +19,7 @@ export default function NewPostPage() {
       console.error(err);
     }
   }
+
   async function handleAIReply({ inputType, inputText, imageUrl, mode, aiReply }) {
     try {
       const postData = {
@@ -40,20 +42,19 @@ export default function NewPostPage() {
     }
   }
 
-
   return (
-    <div className="container-fluid p-0" style={{ height: '100vh' }}> {/* full screen */}
+    <div className="container-fluid p-0" style={{ height: '100vh' }}>
       <div className="d-flex" style={{ height: '100%' }}>
-
         {/* Left side - takes remaining space */}
         <div className="flex-grow-1 border rounded p-3 bg-light d-flex flex-column">
-
-          <OpenAIChat onAIReply={handleAIReply} />
+          {/* ✅ Wrap OpenAIChat in MathJaxContext */}
+          <MathJaxContext>
+            <OpenAIChat onAIReply={handleAIReply} />
+          </MathJaxContext>
         </div>
 
         {errorMsg && <p className="text-danger mt-2">{errorMsg}</p>}
       </div>
-
     </div>
   );
 }

@@ -1,0 +1,17 @@
+.footer {
+  background-color: #f8f9fa; /* light gray */
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.footer-icon-link {
+  color: #333;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-icon-link:hover {
+  color: #13e713; /* LinguaMath green */
+  transform: scale(1.1);
+}
