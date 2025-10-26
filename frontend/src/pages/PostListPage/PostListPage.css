@@ -7,18 +7,37 @@
   margin: 0 auto;
 }
 
+/* Header container now aligns items like navbar */
 .header-container {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem; /* space between logo+text and search */
   margin-bottom: 1.5rem;
+  flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
+/* Logo + title wrapper */
+.header-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space between image and text */
+}
+
+/* Tiny header image to the left */
 .header-image {
-  height: 80px;
+  height: 25px; /* tiny logo */
   object-fit: contain;
 }
 
+/* My Notes text styling to match LinguaMath */
+.my-notes-title {
+  font-size: 1.25rem; /* slightly smaller than navbar logo text */
+  font-weight: bold;
+  color: #22c55e; /* LinguaMath green */
+  font-family: "Arial", sans-serif;
+}
+
+/* Search input stays same style */
 .search-input {
   flex-grow: 0.8; /* slightly less wide than before */
   min-width: 0;
@@ -28,7 +47,6 @@
   border-radius: 0.5rem;
   outline: none;
 }
-
 
 .search-input:focus {
   border-color: #22c55e;

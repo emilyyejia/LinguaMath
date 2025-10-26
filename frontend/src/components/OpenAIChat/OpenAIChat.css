@@ -3,7 +3,7 @@
 ========================= */
 .openai-chat-container {
   height: 100vh;
-  background-color: #f9f9f9;
+  background-color: white;
   padding: 3rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;

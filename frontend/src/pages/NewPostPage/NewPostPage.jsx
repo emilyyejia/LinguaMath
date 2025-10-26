@@ -3,7 +3,8 @@ import { useNavigate } from "react-router";
 import * as postService from "../../services/postService";
 import OpenAIChat from "../../components/OpenAIChat/OpenAIChat";
 import { MathJaxContext } from "better-react-mathjax";
-import headerImage from "../../assets/lingua-ai-header.png"; // adjust path
+import headerImage from "../../assets/lingua-ai-header.png";
+import './NewPostPage.css'; // we'll add new CSS for styling
 
 export default function NewPostPage() {
   const [content, setContent] = useState('');
@@ -43,23 +44,21 @@ export default function NewPostPage() {
   }
 
   return (
-    <div className="container-fluid p-0" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Header - double size */}
-      <div className="text-center" style={{ flex: '0 0 80px' }}>
-        <img 
-          src={headerImage} 
-          alt="Lingua AI" 
-          style={{ height: '70px', objectFit: 'contain', marginTop: '5px' }}
-        />
+    <div className="newpost-page-container">
+      {/* Header */}
+      <div className="header-container">
+        <div className="header-title-wrapper">
+          
+          <span className="header-title">Lingua</span>
+          <img src={headerImage} alt="Lingua AI" className="header-image" />
+        </div>
       </div>
 
-      {/* Chat area fills remaining space */}
-      <div style={{ flex: '1 1 auto', overflow: 'hidden', display: 'flex', padding: '1rem' }}>
-        <div className="flex-grow-1 border rounded bg-light d-flex flex-column">
-          <MathJaxContext>
-            <OpenAIChat onAIReply={handleAIReply} />
-          </MathJaxContext>
-        </div>
+      {/* Chat area */}
+      <div className="chat-container">
+        <MathJaxContext>
+          <OpenAIChat onAIReply={handleAIReply} />
+        </MathJaxContext>
       </div>
 
       {errorMsg && <p className="text-danger mt-2">{errorMsg}</p>}

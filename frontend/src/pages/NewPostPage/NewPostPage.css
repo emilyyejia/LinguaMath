@@ -1,0 +1,43 @@
+.newpost-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.header-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-image {
+  height: 21px; /* small like My Notes */
+  object-fit: contain;
+}
+
+.header-title {
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #21e437; /* LinguaMath green */
+  font-family: "Arial", sans-serif;
+}
+
+
+.chat-container {
+  flex-grow: 1;
+  background-color: #ffffff; /* white background */
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow: hidden;
+}
