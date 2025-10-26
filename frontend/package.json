@@ -12,14 +12,19 @@
   "dependencies": {
     "better-react-mathjax": "^2.3.0",
     "bootstrap": "^5.3.8",
+    "katex": "^0.16.25",
     "lucide-react": "^0.548.0",
     "mathlive": "^0.107.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-markdown": "^10.1.0",
+    "react-mathlive": "^3.0.5-preview.1",
+    "react-mathquill": "^1.0.4",
     "react-router": "^7.6.2",
     "react-router-dom": "^7.9.4",
-    "remark-gfm": "^4.0.1"
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

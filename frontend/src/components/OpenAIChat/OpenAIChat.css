@@ -256,3 +256,759 @@ form img {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
+/* In OpenAIChat.css */
+.mathlive-field {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  min-height: 40px; 
+}
+/* You may want to style the focus state too */
+.mathlive-field:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* Add this to your OpenAIChat.css file */
+
+/* Add this to your OpenAIChat.css file - REPLACE the old KaTeX section */
+
+/* Properly hide KaTeX's MathML (accessibility fallback) to prevent duplicate display */
+.katex .katex-mathml {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+/* Ensure only HTML rendering is visible */
+.katex-html {
+  display: inline-block;
+}
+
+/* Block display for display math */
+.katex-display {
+  display: block;
+  margin: 1em 0;
+  text-align: center;
+}
+
+.katex-display > .katex {
+  display: inline-block;
+  text-align: initial;
+}
+
+/* Make inline math fit naturally in text */
+.message-content .katex {
+  font-size: 1.05em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Ensure proper spacing in messages */
+.message-content {
+  line-height: 1.6;
+}
+
+.message-content p {
+  margin: 0.5em 0;
+}
+
+.message-content p:first-child {
+  margin-top: 0;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Math Keyboard Toggle Button */
+.math-keyboard-toggle {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.6rem;
+  transition: all 0.2s ease;
+}
+
+.math-keyboard-toggle:hover {
+  background-color: #f0f0f0;
+  border-color: #bbb;
+}
+
+/* Math Keyboard Panel */
+.math-keyboard-panel {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Keyboard Sections */
+.keyboard-section {
+  margin-bottom: 0.75rem;
+}
+
+.keyboard-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #333;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Button Grids */
+.button-grid {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.basic-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.fraction-grid {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.advanced-grid {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* Math Buttons */
+.math-btn {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: white;
+  color: #333;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.math-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.math-btn:active {
+  background-color: #e0e0e0;
+}
+
+.basic-btn {
+  font-size: 1.2rem;
+}
+
+.fraction-btn {
+  font-size: 1.2rem;
+}
+
+.advanced-btn {
+  font-size: 1rem;
+}
+
+/* Fraction and Mixed Number Builders */
+.builder-btn {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.builder-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.fraction-builder,
+.mixed-builder {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.fraction-input,
+.mixed-input {
+  flex: 1;
+  min-width: 60px;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.fraction-input:focus,
+.mixed-input:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.fraction-divider {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #666;
+}
+
+.insert-btn {
+  padding: 0.4rem 0.8rem;
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.insert-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.cancel-btn {
+  padding: 0.4rem 0.8rem;
+  background-color: white;
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cancel-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .math-keyboard-panel {
+    max-height: 350px;
+    padding: 0.6rem;
+  }
+
+  .basic-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .fraction-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .advanced-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .math-btn {
+    padding: 0.4rem;
+    font-size: 1rem;
+    min-height: 36px;
+  }
+  
+  .section-title {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .math-keyboard-panel {
+    padding: 0.5rem;
+    max-height: 300px;
+  }
+  
+  .keyboard-section {
+    margin-bottom: 0.5rem;
+  }
+  
+  .basic-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .fraction-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .advanced-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .math-btn {
+    padding: 0.35rem;
+    font-size: 0.95rem;
+    min-height: 34px;
+  }
+  
+  .fraction-builder,
+  .mixed-builder {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .fraction-input,
+  .mixed-input {
+    width: 100%;
+  }
+  
+  .insert-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+}
+
+/* KaTeX Rendering Fixes */
+.katex .katex-mathml {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.katex-html {
+  display: inline-block;
+}
+
+.katex-display {
+  display: block;
+  margin: 1em 0;
+  text-align: center;
+}
+
+.katex-display > .katex {
+  display: inline-block;
+  text-align: initial;
+}
+
+.message-content .katex {
+  font-size: 1.05em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.message-content {
+  line-height: 1.6;
+}
+
+.message-content p {
+  margin: 0.5em 0;
+}
+
+.message-content p:first-child {
+  margin-top: 0;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+/* Hidden textarea (still functional but invisible) */
+.hidden-textarea {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+}
+
+/* Visual Preview that looks like an input */
+.math-preview-input {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  min-height: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  cursor: text;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.math-preview-input:hover {
+  border-color: #999;
+}
+
+.math-preview-input:focus-within {
+  border-color: #666;
+  outline: none;
+}
+
+.preview-placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.math-preview-input p {
+  margin: 0.5em 0;
+}
+
+.math-preview-input p:first-child {
+  margin-top: 0;
+}
+
+.math-preview-input p:last-child {
+  margin-bottom: 0;
+}
+
+/* Math Keyboard Toggle Button */
+.math-keyboard-toggle {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.6rem;
+  transition: all 0.2s ease;
+}
+
+.math-keyboard-toggle:hover {
+  background-color: #f0f0f0;
+  border-color: #bbb;
+}
+
+/* Math Keyboard Panel */
+.math-keyboard-panel {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Keyboard Sections */
+.keyboard-section {
+  margin-bottom: 0.75rem;
+}
+
+.keyboard-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #333;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Button Grids */
+.button-grid {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.basic-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.fraction-grid {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.advanced-grid {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* Math Buttons */
+.math-btn {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: white;
+  color: #333;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.math-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.math-btn:active {
+  background-color: #e0e0e0;
+}
+
+.basic-btn {
+  font-size: 1.2rem;
+}
+
+.fraction-btn {
+  font-size: 1.2rem;
+}
+
+.advanced-btn {
+  font-size: 1rem;
+}
+
+/* Fraction and Mixed Number Builders */
+.builder-btn {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.builder-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.fraction-builder,
+.mixed-builder {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.fraction-input,
+.mixed-input {
+  flex: 1;
+  min-width: 60px;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.fraction-input:focus,
+.mixed-input:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.fraction-divider {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #666;
+}
+
+.insert-btn {
+  padding: 0.4rem 0.8rem;
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.insert-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.cancel-btn {
+  padding: 0.4rem 0.8rem;
+  background-color: white;
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cancel-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .math-keyboard-panel {
+    max-height: 350px;
+    padding: 0.6rem;
+  }
+
+  .basic-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .fraction-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .advanced-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .math-btn {
+    padding: 0.4rem;
+    font-size: 1rem;
+    min-height: 36px;
+  }
+  
+  .section-title {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .math-keyboard-panel {
+    padding: 0.5rem;
+    max-height: 300px;
+  }
+  
+  .keyboard-section {
+    margin-bottom: 0.5rem;
+  }
+  
+  .basic-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .fraction-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .advanced-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .math-btn {
+    padding: 0.35rem;
+    font-size: 0.95rem;
+    min-height: 34px;
+  }
+  
+  .fraction-builder,
+  .mixed-builder {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .fraction-input,
+  .mixed-input {
+    width: 100%;
+  }
+  
+  .insert-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+}
+
+/* KaTeX Rendering Fixes */
+.katex .katex-mathml {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.katex-html {
+  display: inline-block;
+}
+
+.katex-display {
+  display: block;
+  margin: 1em 0;
+  text-align: center;
+}
+
+.katex-display > .katex {
+  display: inline-block;
+  text-align: initial;
+}
+
+.message-content .katex {
+  font-size: 1.05em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.message-content {
+  line-height: 1.6;
+}
+
+.message-content p {
+  margin: 0.5em 0;
+}
+
+.message-content p:first-child {
+  margin-top: 0;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
