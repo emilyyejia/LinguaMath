@@ -279,7 +279,7 @@ Step 2: Give short explanations in both English and Chinese using familiar cultu
           className="ai-btn math-keyboard-toggle"
           onClick={() => setShowMathKeyboard(!showMathKeyboard)}
         >
-          {showMathKeyboard ? "Hide" : "Show"} Math Keyboard 🔢
+          {showMathKeyboard ? "Hide" : "Show"} Math Keyboard
         </button>
 
         {showMathKeyboard && (
