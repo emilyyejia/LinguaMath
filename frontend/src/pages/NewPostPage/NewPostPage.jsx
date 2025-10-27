@@ -49,7 +49,7 @@ export default function NewPostPage() {
       <div className="header-container">
         <div className="header-title-wrapper">
           
-          <span className="header-title">Lingua</span>
+          <span className="header-title">LinguaMath</span>
           <img src={headerImage} alt="Lingua AI" className="header-image" />
         </div>
       </div>

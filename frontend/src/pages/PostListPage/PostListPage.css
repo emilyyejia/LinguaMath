@@ -33,7 +33,7 @@
 .my-notes-title {
   font-size: 1.25rem; /* slightly smaller than navbar logo text */
   font-weight: bold;
-  color: #22c55e; /* LinguaMath green */
+  color: black; /* LinguaMath green */
   font-family: "Arial", sans-serif;
 }
 
