@@ -55,23 +55,11 @@ export default function NavBar({ user, setUser }) {
                   Log Out
                 </Link>
               </li>
-              <li className="nav-item me-3">
-                <NavLink className="nav-link" to="/support">Support</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/about">About</NavLink>
-              </li>
             </>
           ) : (
             <>
               <li className="nav-item me-3">
-                <NavLink className="nav-link" to="/signup">Sign Up/In</NavLink>
-              </li>
-              <li className="nav-item me-3">
-                <NavLink className="nav-link" to="/support">Support</NavLink>
-              </li>
-              <li className="nav-item ">
-                <NavLink className="nav-link" to="/about">About</NavLink>
+                <NavLink className="nav-link" to="/signup">Sign Up/Log In</NavLink>
               </li>
 
             </>
