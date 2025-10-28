@@ -10,6 +10,7 @@ import SignUpPage from '../SignUpPage/SignUpPage';
 import { getUser } from '../../services/authService';
 import LogInPage from '../LogInPage/LogInPage';
 import Footer from "../../components/Footer/Footer";
+import SupportPage from '../SupportPage/SupportPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/posts" element={<PostListPage />} />
             <Route path="/posts/new" element={<NewPostPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/support" element={<SupportPage />} />
             <Route path="*" element={null}/>
           </Routes>
         ) : (
@@ -31,6 +33,7 @@ export default function App() {
             <Route path="/signup" element={<SignUpPage setUser={setUser}/>}/>
             <Route path="/login" element={<LogInPage setUser={setUser}/>}/>
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/support" element={<SupportPage />} />
             <Route path="*" element={null}/>
           </Routes>
         )}

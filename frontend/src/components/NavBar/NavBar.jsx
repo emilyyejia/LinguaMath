@@ -15,7 +15,6 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav className="navbar bg-body-tertiary"
-      style={{ paddingTop: '44px' }}
     >
       <div className="container-fluid">
         <NavLink
@@ -56,6 +55,9 @@ export default function NavBar({ user, setUser }) {
                   Log Out
                 </Link>
               </li>
+              <li className="nav-item me-3">
+                <NavLink className="nav-link" to="/support">Support</NavLink>
+              </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/about">About</NavLink>
               </li>
@@ -63,14 +65,15 @@ export default function NavBar({ user, setUser }) {
           ) : (
             <>
               <li className="nav-item me-3">
-                <NavLink className="nav-link" to="/login">Log In</NavLink>
+                <NavLink className="nav-link" to="/signup">Sign Up/Log In</NavLink>
               </li>
-              <li className="nav-item me-3">
-                <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+                            <li className="nav-item me-3">
+                <NavLink className="nav-link" to="/support">Contact Us</NavLink>
               </li>
-              <li className="nav-item">
+              <li className="nav-item ">
                 <NavLink className="nav-link" to="/about">About</NavLink>
               </li>
+
             </>
           )}
         </ul>
