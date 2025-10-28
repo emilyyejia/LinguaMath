@@ -14,11 +14,6 @@
     color: #1a1a1a;
   }
 /* App.css or NavBar.css */
-@media (max-width: 414px) {
-  .navbar {
-    padding-top: 44px;
-  }
-}
 
   a:hover {
     background-color: #1a1a1a;

@@ -65,7 +65,7 @@ export default function NavBar({ user, setUser }) {
           ) : (
             <>
               <li className="nav-item me-3">
-                <NavLink className="nav-link" to="/signup">Sign Up/Log In</NavLink>
+                <NavLink className="nav-link" to="/signup">Sign Up/In</NavLink>
               </li>
                             <li className="nav-item me-3">
                 <NavLink className="nav-link" to="/support">Contact Us</NavLink>
