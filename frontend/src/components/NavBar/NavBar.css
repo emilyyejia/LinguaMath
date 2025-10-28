@@ -6,26 +6,77 @@
   font-size: 2vmin;
 }
 
-.NavBar {
-  a {
-    border-radius: 0.8vmin;
-    padding: 0.5vmin 1.5vmin;
-    text-decoration: none;
-    color: #1a1a1a;
-  }
-/* App.css or NavBar.css */
+.NavBar a {
+  border-radius: 0.8vmin;
+  padding: 0.5vmin 1.5vmin;
+  text-decoration: none;
+  color: #1a1a1a;
+}
 
-  a:hover {
-    background-color: #1a1a1a;
-    color: whitesmoke;
-  }
+.NavBar a:hover {
+  background-color: #1a1a1a;
+  color: whitesmoke;
+}
 
-  a.active {
-    background-color: rebeccapurple;
-    color: whitesmoke;
-  }
+.NavBar a.active {
+  background-color: rebeccapurple;
+  color: whitesmoke;
+}
 
-  span {
-    color: rgb(108, 9, 87);
+.NavBar span {
+  color: rgb(108, 9, 87);
+}
+
+/* Mobile fixes */
+@media (max-width: 414px) {
+  .navbar {
+    padding-top: 44px;
+  }
+  
+  /* Keep container flex and horizontal */
+  .navbar .container-fluid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  /* Keep the brand on the left */
+  .navbar-brand {
+    flex-shrink: 0 !important;
+  }
+  
+  /* Push right-side nav to the right */
+  .navbar-nav {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    margin-left: auto !important;
+  }
+  
+  /* Remove the me-auto class effect on mobile */
+  .navbar-nav.me-auto {
+    margin-right: 0 !important;
+  }
+  
+  /* Adjust spacing for nav items on mobile */
+  .nav-item {
+    margin-left: 1vmin !important;
+    margin-right: 1vmin !important;
+  }
+  
+  /* Make nav links smaller on mobile if needed */
+  .nav-link {
+    font-size: 3.5vmin !important;
+    padding: 0.5vmin !important;
+  }
+  
+  .navbar-brand {
+    font-size: 4.5vmin !important;
+  }
+  
+  /* Hide "Welcome, Name" text on very small screens if needed */
+  .navbar-text {
+    display: none !important;
   }
 }

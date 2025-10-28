@@ -1,41 +1,56 @@
 import React from "react";
 
-export default function AboutPage() {
+export default function PrivacyPage() {
   return (
     <div className="d-flex flex-column vh-100 overflow-auto p-5" style={{ backgroundColor: '#f8f9fa' }}>
-      <h1 className="fw-bold mb-4 text-center">About Us</h1>
+      <h1 className="fw-bold mb-4 text-center">Privacy Policy</h1>
 
-      {/* Who We Are */}
-      <section className="mb-5">
-        <h3 className="fw-semibold mb-3">Who We Are</h3>
+      {/* Data Collection */}
+      <section className="mb-2">
+        <h3 className="fw-semibold mb-3">Data We Collect</h3>
         <p>
-          LinguaMath is an educational platform designed to support newcomer and multilingual students 
-          in learning mathematics effectively. Our team is composed of educators, researchers, and 
-          developers who are passionate about combining technology and pedagogy to make math accessible 
-          and engaging for learners of all backgrounds.
+          LinguaMath collects only the information necessary to provide and improve our services. 
+          This includes account information, login credentials, and learning progress data. 
+          No unnecessary personal information is collected.
         </p>
       </section>
 
-      {/* Research Background */}
-      <section className="mb-5">
-        <h3 className="fw-semibold mb-3">Research Background</h3>
+      {/* How Data is Used */}
+      <section className="mb-2">
+        <h3 className="fw-semibold mb-3">How We Use Your Data</h3>
         <p>
-          Our research focuses on understanding the challenges multilingual students face in 
-          mathematics classrooms, particularly in Canadian multicultural settings. By leveraging 
-          translanguaging strategies and AI-powered tools, we aim to provide personalized support 
-          that bridges language barriers and enhances mathematical understanding.
+          Data is used to personalize the learning experience, track student progress, 
+          and ensure proper functionality of the app. It may also be used for research purposes 
+          in anonymized form to improve the platform.
         </p>
       </section>
 
-      {/* Key Research Findings */}
+      {/* Data Security */}
+      <section className="mb-2">
+        <h3 className="fw-semibold mb-3">Data Security</h3>
+        <p>
+          All user data is stored securely and encrypted using industry-standard practices, 
+          including bcrypt for passwords and HTTPS for network communications. 
+          We do not share personal data with third parties without consent.
+        </p>
+      </section>
+
+      {/* User Rights */}
+      <section className="mb-2">
+        <h3 className="fw-semibold mb-3">Your Rights</h3>
+        <p>
+          Users can contact us at <a href="mailto:ye.jia@mail.utoronto.ca">ye.jia@mail.utoronto.ca</a> 
+          to request access, correction, or deletion of their personal data.
+        </p>
+      </section>
+
+      {/* Terms */}
       <section>
-        <h3 className="fw-semibold mb-3">Key Research Findings</h3>
-        <ul>
-          <li>Generative AI tools can effectively support students in multilingual math classrooms.</li>
-          <li>Translanguaging strategies improve comprehension and engagement in mathematics learning.</li>
-          <li>Interactive learning logs help students track progress and build confidence in problem-solving.</li>
-          <li>Visual and culturally relevant examples make mathematical concepts more accessible.</li>
-        </ul>
+        <h3 className="fw-semibold mb-2">Terms of Use</h3>
+        <p>
+          By using LinguaMath, you agree to our terms of service and privacy practices. 
+          We may update this policy periodically, and updates will be communicated through the app.
+        </p>
       </section>
     </div>
   );
