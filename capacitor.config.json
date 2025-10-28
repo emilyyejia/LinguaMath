@@ -1,6 +1,9 @@
 {
-  "appId": "com.yourapp.linguamath",
+  "appId": "ca.linguamath.app",
   "appName": "LinguaMath",
   "webDir": "frontend/dist",
-  "bundledWebRuntime": false
+  "bundledWebRuntime": false,
+  "ios": {
+    "contentInset": "always"
+  }
 }

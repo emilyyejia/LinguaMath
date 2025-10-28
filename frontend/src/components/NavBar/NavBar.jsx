@@ -14,7 +14,9 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav className="navbar bg-body-tertiary">
+    <nav className="navbar bg-body-tertiary"
+      style={{ paddingTop: '44px' }}
+    >
       <div className="container-fluid">
         <NavLink
           className="navbar-brand fw-bold"
