@@ -46,10 +46,10 @@ export default function OpenAIChat({ onAIReply }) {
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
     const text = prompt;
-    
+
     const newText = text.substring(0, start) + symbol + text.substring(end);
     setPrompt(newText);
-    
+
     setTimeout(() => {
       textarea.focus();
       const newPos = start + symbol.length;
@@ -125,8 +125,9 @@ Step 1: Identify and explain Canadian or English cultural terms that may be unfa
 Step 2: Give short explanations in both English and Chinese using familiar cultural comparisons from China. Do NOT provide a full solution. Use LaTeX format for math expressions (wrap in $ for inline math).
 \n${prompt}`
             : `Provide a step-by-step hint for solving this math question in both English and Chinese without giving the full answer. Use LaTeX format for math expressions (wrap in $ for inline math):\n${prompt}`;
+      const API_BASE_URL = 'https://www.linguamath.ca' || '';
 
-      const endpoint = imageFile ? "/api/openai-vision" : "/api/openai";
+      const endpoint = imageFile ? `${API_BASE_URL}/api/openai-vision` : `${API_BASE_URL}/api/openai`;
 
       let body;
       let headers = {};
@@ -198,7 +199,8 @@ Step 2: Give short explanations in both English and Chinese using familiar cultu
         targetLanguage: "zh",
       };
       const token = localStorage.getItem("token");
-      const res = await fetch("/api/posts", {
+      const API_BASE_URL = 'https://www.linguamath.ca' || '';
+      const res = await fetch(`${API_BASE_URL}/api/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -250,14 +252,14 @@ Step 2: Give short explanations in both English and Chinese using familiar cultu
           }
           className="hidden-textarea"
         />
-        
+
         {/* Visual Preview (looks like input) */}
-        <div 
+        <div
           className="math-preview-input"
           onClick={() => textareaRef.current?.focus()}
         >
           {prompt ? (
-            <ReactMarkdown 
+            <ReactMarkdown
               remarkPlugins={[remarkGfm, remarkMath]}
               rehypePlugins={[rehypeKatex]}
             >
@@ -273,7 +275,7 @@ Step 2: Give short explanations in both English and Chinese using familiar cultu
             </span>
           )}
         </div>
-        
+
         <button
           type="button"
           className="ai-btn math-keyboard-toggle"
@@ -467,7 +469,7 @@ Step 2: Give short explanations in both English and Chinese using familiar cultu
           <div key={idx} className={`message ${msg.role}`}>
             {msg.image && <img src={msg.image} alt="user-upload" />}
             <div className="message-content">
-              <ReactMarkdown 
+              <ReactMarkdown
                 remarkPlugins={[remarkGfm, remarkMath]}
                 rehypePlugins={[rehypeKatex]}
               >

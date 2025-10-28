@@ -1,6 +1,7 @@
 import sendRequest from "./sendRequest";
+const API_BASE_URL = 'https://www.linguamath.ca' || '';
+const BASE_URL = `${API_BASE_URL}/api/auth`;
 
-const BASE_URL = '/api/posts';
 
 export async function index() {
   return sendRequest(BASE_URL);

@@ -1,0 +1,6 @@
+{
+	"appId": "ca.linguamath.app",
+	"appName": "LinguaMath",
+	"webDir": "dist",
+	"packageClassList": []
+}

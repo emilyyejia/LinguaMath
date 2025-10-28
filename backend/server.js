@@ -3,9 +3,18 @@ const express = require('express');
 const cors = require('cors');
 const logger = require('morgan');
 const app = express();
+
 app.use(cors({
-  origin: 'https://linguamath-d1c9e2effc7a.herokuapp.com',
-  credentials: true,
+  origin: [
+    'https://linguamath-d1c9e2effc7a.herokuapp.com',
+    'https://www.linguamath.ca',
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'capacitor://localhost',  // Add this for iOS app
+    'ionic://localhost',       // Also add this for good measure
+    'http://localhost'
+  ],
+  credentials: true
 }));
 // Process the secrets/config vars in .env
 require('dotenv').config();

@@ -1,0 +1,6 @@
+{
+  "appId": "com.yourapp.linguamath",
+  "appName": "LinguaMath",
+  "webDir": "frontend/dist",
+  "bundledWebRuntime": false
+}

@@ -1,5 +1,7 @@
 import sendRequest from "./sendRequest";
-const BASE_URL = '/api/auth';
+const API_BASE_URL = 'https://www.linguamath.ca' || '';
+const BASE_URL = `${API_BASE_URL}/api/auth`;
+
 export async function signUp(userData) {
     const token = await sendRequest(BASE_URL + '/signup', 'POST', userData);
     localStorage.setItem('token', token);
