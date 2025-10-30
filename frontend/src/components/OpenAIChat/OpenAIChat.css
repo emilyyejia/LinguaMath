@@ -3,8 +3,6 @@
 ========================= */
 .openai-chat-container {
   height: 100vh;
-  height: 100%;
-  max-height: 100vh;
   background-color: white;
   display: flex;
   flex-direction: column;
