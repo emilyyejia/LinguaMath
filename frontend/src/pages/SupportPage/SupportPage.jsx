@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SupportPage() {
   return (
-    <div className="d-flex flex-column vh-100 overflow-auto p-5" style={{ backgroundColor: '#f8f9fa' }}>
+    <div className="d-flex flex-column min-vh-100 p-5" style={{ backgroundColor: 'white' }}>
       <h1 className="fw-bold mb-4 text-center">Support</h1>
 
       {/* Contact Us */}
@@ -10,11 +10,11 @@ export default function SupportPage() {
         <h3 className="fw-semibold mb-3">Contact Us</h3>
         <p>
           If you need assistance with your LinguaMath account or have questions about the app, 
-          we’re here to help. Please reach out to us via email and include your username 
+          we're here to help. Please reach out to us via email and include your username 
           and a description of the issue so we can respond promptly.
         </p>
         <p>
-          Email: <a href="mailto:support@linguamath.com">ye.jia@mail.utoronto.ca</a>
+          Email: <a href="mailto:ye.jia@mail.utoronto.ca">ye.jia@mail.utoronto.ca</a>
         </p>
       </section>
 
@@ -28,7 +28,7 @@ export default function SupportPage() {
       </section>
 
       {/* FAQ / Tips */}
-      <section>
+      <section className="mb-5">
         <h3 className="fw-semibold mb-3">Tips for Getting Help</h3>
         <ul>
           <li>Provide your username and device type for faster troubleshooting.</li>
