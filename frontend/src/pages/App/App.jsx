@@ -16,7 +16,7 @@ import DeleteAccountPage from '../DeleteAccountPage/DeleteAccountPage';
 export default function App() {
   const [user, setUser] = useState(getUser());
   return (
-    <main className='App d-flex flex-column'>
+    <main className='App d-flex flex-column min-vh-100'>
       <NavBar user={user} setUser={setUser}/>
       <section id='main-section'>
         {user ? (
