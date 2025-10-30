@@ -6,10 +6,14 @@
   margin: 0.2rem 0;
 }
 
-/* Hide navbar-text on very small screens */
-@media (max-width: 576px) {
-  .navbar-text {
-    display: none;
-  }
+/* Fixed navbar for all screens (iOS app style) */
+.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1030;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white; /* Add background so content doesn't show through */
 }
-

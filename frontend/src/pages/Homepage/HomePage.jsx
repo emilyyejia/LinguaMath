@@ -3,12 +3,12 @@ import promoImage from '../../assets/promo-image.jpg'; // replace with your imag
 
 export default function HomePage({ user }) {
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column min-vh-100">
       {/* Main Content */}
       <div className="container flex-grow-1 d-flex flex-column justify-content-center py-5">
         {/* Hero Section */}
-        <div className="row align-items-center">
-          <div className="col-md-6 text-center text-md-start mb-5 mb-md-0">
+        <div className="row align-items-center mt-3 mt-md-0">
+          <div className="col-md-6 text-center text-md-start mb-4 mb-md-0">
             <h1 className="fw-bold mb-3">Discover math with a little AI magic!</h1>
             <p className="lead mb-4">
               Our mission is to empower all students to learn mathematics confidently,
@@ -17,7 +17,7 @@ export default function HomePage({ user }) {
             {!user && (
               <Link
                 to="/signup"
-                className="btn btn-lg rounded-pill px-4 text-white mb-4 mb-md-0"
+                className="btn btn-lg rounded-pill px-4 text-white mb-3 mb-md-0"
                 style={{ backgroundColor: '#13e713ff', borderColor: '#13e713ff' }}
               >
                 Get Started
@@ -29,7 +29,7 @@ export default function HomePage({ user }) {
             <img
               src={promoImage}
               alt="Learning Promo"
-              className="img-fluid rounded shadow mt-4 mt-md-0"
+              className="img-fluid rounded shadow"
               style={{ maxHeight: "60vh", objectFit: "contain" }}
             />
           </div>

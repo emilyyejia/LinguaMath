@@ -1,0 +1,4 @@
+/* Fix for fixed navbar on all screens */
+.App {
+  padding-top: 70px; /* Adjust this value to match your actual navbar height */
+}

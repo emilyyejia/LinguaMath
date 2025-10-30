@@ -1,7 +1,7 @@
 .newpost-page-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: calc(100vh - 2rem);
   padding: 1rem;
 }
 
@@ -29,7 +29,6 @@
   color: black; /* LinguaMath green */
   font-family: "Arial", sans-serif;
 }
-
 
 .chat-container {
   flex-grow: 1;
