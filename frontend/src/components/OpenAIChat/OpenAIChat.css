@@ -3,6 +3,8 @@
 ========================= */
 .openai-chat-container {
   height: 100vh;
+  height: 100%;
+  max-height: 100vh;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -603,6 +605,14 @@ form img {
   .insert-btn,
   .cancel-btn {
     width: 100%;
+  }
+  .image-preview {
+  max-width: 100%; /* ensures it never exceeds the container width */
+  max-height: 50px; /* limits height so it doesn't push footer */
+  object-fit: contain; /* preserves aspect ratio without cropping */
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
 }
 
