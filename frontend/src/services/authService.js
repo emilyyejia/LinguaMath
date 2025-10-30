@@ -1,5 +1,8 @@
 import sendRequest from "./sendRequest";
-const API_BASE_URL = 'https://www.linguamath.ca' || '';
+const API_BASE_URL =
+  import.meta.env.MODE === 'production'
+    ? 'https://www.linguamath.ca'
+    : 'http://localhost:3000';
 const BASE_URL = `${API_BASE_URL}/api/auth`;
 
 export async function signUp(userData) {
@@ -14,10 +17,17 @@ export async function logIn(credentials) {
   return getUser();
 }
 
+export async function deleteAccount(password) {
+  await sendRequest(`${BASE_URL}/account`, 'DELETE', { password });
+  localStorage.removeItem('token');
+  return null;
+}
+
 export function getUser() {
     const token = getToken();
     return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
+
 export function getToken () {
       // getItem returns null if there's no key
   const token = localStorage.getItem('token');
@@ -35,4 +45,3 @@ export function getToken () {
 export function logOut() {
     localStorage.removeItem('token');
 }
-

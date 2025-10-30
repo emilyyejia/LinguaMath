@@ -13,8 +13,6 @@ export default function Footer() {
 
         {/* Right side: Contact, Privacy, and Icons */}
         <div className="d-flex justify-content-center align-items-center gap-3">
-          <NavLink className="nav-link p-0" to="/support">Contact Us</NavLink>
-          <NavLink className="nav-link p-0" to="/about">Privacy Terms</NavLink>
 
           <a
             href="https://www.linkedin.com/in/ye-jia-a80245205/"

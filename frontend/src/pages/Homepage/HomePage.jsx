@@ -3,7 +3,7 @@ import promoImage from '../../assets/promo-image.jpg'; // replace with your imag
 
 export default function HomePage({ user }) {
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="d-flex flex-column">
       {/* Main Content */}
       <div className="container flex-grow-1 d-flex flex-column justify-content-center py-5">
         {/* Hero Section */}
