@@ -2,9 +2,10 @@
    Container
 ========================= */
 .openai-chat-container {
-  min-height: 70vh;
+  height: 100vh;
+  height: 100%;
+  max-height: 100vh;
   background-color: white;
-  padding: 3rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -18,7 +19,7 @@
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 16px 24px;
   border-radius: 8px;
@@ -61,7 +62,7 @@
 ========================= */
 .mode-buttons {
   display: flex;
-  flex-wrap: wrap;          /* wrap buttons on small screens */
+  flex-wrap: wrap; /* wrap buttons on small screens */
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
@@ -73,7 +74,7 @@
   max-width: 100%;
   min-width: 120px;
   text-align: center;
-  white-space: normal;      /* allow text wrap */
+  white-space: normal; /* allow text wrap */
   font-size: 0.95rem;
   padding: 0.4rem 0.6rem;
 }
@@ -233,10 +234,6 @@ form img {
    Mobile responsive
 ========================= */
 @media (max-width: 480px) {
-  .openai-chat-container {
-    padding: 2rem 0.5rem 1rem 0.5rem;
-  }
-
   .form-container {
     padding: 0.8rem;
   }
@@ -262,12 +259,12 @@ form img {
 }
 
 .image-preview {
-  max-width: 100%;      /* ensures it never exceeds the container width */
-  max-height: 200px;    /* limits height so it doesn't push footer */
-  object-fit: contain;  /* preserves aspect ratio without cropping */
+  max-width: 100%; /* ensures it never exceeds the container width */
+  max-height: 200px; /* limits height so it doesn't push footer */
+  object-fit: contain; /* preserves aspect ratio without cropping */
   margin-top: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 /* In OpenAIChat.css */
 .mathlive-field {
@@ -278,7 +275,7 @@ form img {
   width: 100%;
   box-sizing: border-box;
   margin-top: 10px;
-  min-height: 40px; 
+  min-height: 40px;
 }
 /* You may want to style the focus state too */
 .mathlive-field:focus-within {
@@ -546,21 +543,21 @@ form img {
   .basic-grid {
     grid-template-columns: repeat(5, 1fr);
   }
-  
+
   .fraction-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .advanced-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-  
+
   .math-btn {
     padding: 0.4rem;
     font-size: 1rem;
     min-height: 36px;
   }
-  
+
   .section-title {
     font-size: 0.75rem;
   }
@@ -571,40 +568,40 @@ form img {
     padding: 0.5rem;
     max-height: 300px;
   }
-  
+
   .keyboard-section {
     margin-bottom: 0.5rem;
   }
-  
+
   .basic-grid {
     grid-template-columns: repeat(5, 1fr);
   }
-  
+
   .fraction-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .advanced-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .math-btn {
     padding: 0.35rem;
     font-size: 0.95rem;
     min-height: 34px;
   }
-  
+
   .fraction-builder,
   .mixed-builder {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .fraction-input,
   .mixed-input {
     width: 100%;
   }
-  
+
   .insert-btn,
   .cancel-btn {
     width: 100%;
@@ -913,21 +910,21 @@ form img {
   .basic-grid {
     grid-template-columns: repeat(5, 1fr);
   }
-  
+
   .fraction-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .advanced-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-  
+
   .math-btn {
     padding: 0.4rem;
     font-size: 1rem;
     min-height: 36px;
   }
-  
+
   .section-title {
     font-size: 0.75rem;
   }
@@ -938,40 +935,40 @@ form img {
     padding: 0.5rem;
     max-height: 300px;
   }
-  
+
   .keyboard-section {
     margin-bottom: 0.5rem;
   }
-  
+
   .basic-grid {
     grid-template-columns: repeat(5, 1fr);
   }
-  
+
   .fraction-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .advanced-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .math-btn {
     padding: 0.35rem;
     font-size: 0.95rem;
     min-height: 34px;
   }
-  
+
   .fraction-builder,
   .mixed-builder {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .fraction-input,
   .mixed-input {
     width: 100%;
   }
-  
+
   .insert-btn,
   .cancel-btn {
     width: 100%;
