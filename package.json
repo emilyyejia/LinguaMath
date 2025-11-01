@@ -16,6 +16,7 @@
     "@capacitor/cli": "^7.4.4",
     "@capacitor/core": "^7.4.4",
     "@capacitor/ios": "^7.4.4",
+    "@capacitor/status-bar": "^7.0.3",
     "aws-sdk": "^2.1692.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",

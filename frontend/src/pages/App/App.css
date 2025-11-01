@@ -1,4 +1,12 @@
-/* Fix for fixed navbar on all screens */
 .App {
-  padding-top: 70px; /* Adjust this value to match your actual navbar height */
+  height: 100vh;             /* full viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-container {
+  flex: 1;                       /* take remaining space below navbar */
+  overflow-y: auto;               /* scroll only inside this container */
+  -webkit-overflow-scrolling: touch;
+  padding-top: 70px;  /* smooth iOS momentum scrolling */
 }

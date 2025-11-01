@@ -13,7 +13,18 @@
   left: 0;
   right: 0;
   width: 100%;
+  height: 70px; /* include notch */
   z-index: 1030;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: white; /* Add background so content doesn't show through */
+  background-color: white;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transform: translateZ(0);
+}
+
+
+
+.navbar-collapse {
+  background-color: white;
+  z-index: 1040;
 }

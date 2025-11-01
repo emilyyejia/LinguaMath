@@ -18,7 +18,7 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg ">
       <div className="container-fluid">
         <NavLink className="navbar-brand fw-bold" to="/">
           <img

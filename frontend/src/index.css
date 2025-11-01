@@ -2,10 +2,8 @@
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color: #1a1a1a;
   background-color: whitesmoke;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,15 +14,14 @@
   box-sizing: border-box;
 }
 
-body {
-  height: 100%;
+html, body {
   margin: 0;
   padding: 0;
-
+  height: 100%;
+  overflow: hidden; /* prevent body scroll */
 }
 
-h1,
-h2 {
+h1, h2 {
   text-align: center;
 }
 
@@ -35,38 +32,34 @@ button {
   font-size: 2vmin;
   font-weight: 500;
   font-family: inherit;
-  background-color: white;   /* already white */
-  color: black;              /* change from whitesmoke to black */
+  background-color: white;
+  color: black;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: white;  /* keep white on hover */
-  color: black;             /* keep text black */
+  background-color: white;
+  color: black;
   border-color: #1a1a1a;
 }
-
 
 button:disabled {
   background-color: white;
 }
 
 form {
-  border: none; /* remove form border */
+  border: none;
   padding: 4vmin;
   display: grid;
   gap: 1.2vmin;
 }
 
-input,
-select,
-textarea {
-  border: none; /* remove input borders */
+input, select, textarea {
+  border: none;
   padding: 0.7vmin;
   font-size: 2vmin;
-  border-radius: 0; /* optional, remove rounded corners */
+  border-radius: 0;
 }
-
 
 form > button:last-child {
   margin-top: 2vmin;
@@ -75,10 +68,6 @@ form > button:last-child {
 label {
   font-size: 2vmin;
   font-weight: bold;
-}
-
-h2 {
-  text-align: center;
 }
 
 .error-message {
