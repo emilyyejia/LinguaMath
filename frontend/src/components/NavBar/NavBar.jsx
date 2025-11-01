@@ -89,16 +89,6 @@ export default function NavBar({ user, setUser }) {
                     Sign Up/In
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/about">
-                    Privacy Terms
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/support">
-                    Support
-                  </NavLink>
-                </li>
               </>
             )}
           </ul>

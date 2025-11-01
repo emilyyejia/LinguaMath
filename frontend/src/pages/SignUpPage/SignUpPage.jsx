@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { signUp } from '../../services/authService';
+import './SignUpPage.css';
 
 export default function SignUpPage({ setUser }) {
   const [formData, setFormData] = useState({
@@ -10,7 +11,6 @@ export default function SignUpPage({ setUser }) {
     confirm: '',
   });
   const [errorMsg, setErrorMsg] = useState('');
-
   const navigate = useNavigate();
 
   function handleChange(evt) {
@@ -18,7 +18,7 @@ export default function SignUpPage({ setUser }) {
     setErrorMsg('');
   }
 
-  async function handleSumbit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     try {
       const user = await signUp(formData);
@@ -33,89 +33,55 @@ export default function SignUpPage({ setUser }) {
   const disable = formData.password !== formData.confirm;
 
   return (
-    <div
-      className="d-flex flex-column justify-content-start align-items-center vh-100"
-      style={{ paddingTop: '10vh' }} // Moves form slightly down from top
-    >
-      <div className="w-100" style={{ maxWidth: '400px' }}>
-        <h2 className="text-center mb-4">Sign Up</h2>
+    <div className="signup-page">
+      <div className="signup-card shadow-lg">
+        <h2 className="signup-title">Create Account</h2>
+        <p className="signup-subtitle">Join us to explore more features</p>
 
-        <form autoComplete="off" onSubmit={handleSumbit}>
-          {/* Name */}
-          <div className="mb-3" style={{ maxWidth: '300px', margin: '0 auto' }}>
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              placeholder="Your Name"
-            />
-          </div>
+        <form onSubmit={handleSubmit} autoComplete="off" className="signup-form">
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Full Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email Address"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Password"
+            required
+          />
+          <input
+            type="password"
+            name="confirm"
+            value={formData.confirm}
+            onChange={handleChange}
+            placeholder="Confirm Password"
+            required
+          />
 
-          {/* Email */}
-          <div className="mb-3" style={{ maxWidth: '300px', margin: '0 auto' }}>
-            <input
-              type="email"
-              className="form-control form-control-lg"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="Email"
-            />
-          </div>
+          {errorMsg && <p className="error-message">{errorMsg}</p>}
 
-          {/* Password */}
-          <div className="mb-3" style={{ maxWidth: '300px', margin: '0 auto' }}>
-            <input
-              type="password"
-              className="form-control form-control-lg"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              placeholder="Password"
-            />
-          </div>
-
-          {/* Confirm Password */}
-          <div className="mb-3" style={{ maxWidth: '300px', margin: '0 auto' }}>
-            <input
-              type="password"
-              className="form-control form-control-lg"
-              name="confirm"
-              value={formData.confirm}
-              onChange={handleChange}
-              required
-              placeholder="Confirm Password"
-            />
-          </div>
-
-          {/* Submit Button */}
-          <div style={{ maxWidth: '300px', margin: '0 auto' }}>
-            <button
-              type="submit"
-              className="btn w-100"
-              disabled={disable}
-              style={{ backgroundColor: '#2ddc2dff', borderColor: '#2ddc2dff', color: 'white' }}
-            >
-              SIGN UP
-            </button>
-          </div>
+          <button type="submit" className="signup-btn" disabled={disable}>
+            Sign Up
+          </button>
         </form>
 
-        {/* Error Message */}
-        {errorMsg && <p className="text-danger mt-2 text-center">{errorMsg}</p>}
-
-        {/* Link to Log In */}
-        <p className="text-center mt-3">
+        <p className="login-text">
           Already have an account?{' '}
-          <span
-            style={{ color: '#2ddc2d', cursor: 'pointer' }}
-            onClick={() => navigate('/login')}
-          >
+          <span onClick={() => navigate('/login')} className="login-link">
             Log In
           </span>
         </p>
