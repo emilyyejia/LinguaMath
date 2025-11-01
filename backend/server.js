@@ -4,6 +4,14 @@ const cors = require('cors');
 const logger = require('morgan');
 const app = express();
 
+// Force HTTPS on all requests
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect('https://' + req.headers.host + req.url);
+  }
+  next();
+});
+
 app.use(cors({
   origin: [
     'https://linguamath-d1c9e2effc7a.herokuapp.com',
